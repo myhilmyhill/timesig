@@ -1,0 +1,13 @@
+services:
+  timesig:
+    build: .
+    devices:
+      - /dev/snd
+    environment:
+      PIPEWIRE_RUNTIME_DIR: /tmp
+      TZ: Asia/Tokyo
+    volumes:
+      - /run/user/1000/pipewire-0:/tmp/pipewire-0
+      - ./Time_Signal.ogg:/Time_Signal.ogg
+      - ./crontab:/etc/cron.d/timesig-cron
+      - ./hh59.sh:/usr/local/bin/hh59.sh
